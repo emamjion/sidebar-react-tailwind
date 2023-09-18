@@ -8,50 +8,50 @@ import { TbReportAnalytics } from "react-icons/tb";
 import { RiSettings4Line } from "react-icons/ri";
 import { FiFolder } from "react-icons/fi";
 import { FiShoppingCart } from "react-icons/fi";
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const Sidebar = () => {
     const menus = [
         {
             name: 'dashboard',
-            link: '/',
+            link: '/dashboard',
             icon: MdOutlineDashboard
         },
         {
             name: 'user',
-            link: '/',
+            link: '/user',
             icon: AiOutlineUser
         },
         {
             name: 'message',
-            link: '/',
+            link: '/message',
             icon: FiMessageSquare
         },
         {
             name: 'analytics',
-            link: '/',
+            link: '/analytics',
             icon: TbReportAnalytics,
             margin: true
         },
         {
             name: 'File Manager',
-            link: '/',
+            link: '/file',
             icon: FiFolder
         },
         {
             name: 'Cart',
-            link: '/',
+            link: '/cart',
             icon: FiShoppingCart
         },
         {
             name: 'Saved',
-            link: '/',
+            link: '/saved',
             icon: AiOutlineHeart,
             margin: true
         },
         {
             name: 'Setting',
-            link: '/',
+            link: '/setting',
             icon: RiSettings4Line
         }
     ]
@@ -72,6 +72,7 @@ const Sidebar = () => {
                         menus.map((menu, i) => <Link
                             key={i}
                             className={` ${menu?.margin && 'mt-5'} group flex items-center gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md`}
+                            to={menu?.link}
                         >
                             <div>
                                 {React.createElement(menu?.icon, {size: '20'})}
@@ -85,7 +86,7 @@ const Sidebar = () => {
             </div>
             
             <div className='m-3 text-xl text-gray-900 font-semibold'>
-                React Sidebar
+                <Outlet/>
             </div>
         </section>
     );
